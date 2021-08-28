@@ -1,6 +1,7 @@
-# Welcome to Rio Analytics Team 53 DS4A
 
-Final project repository.
+ # Welcome to Rio Analytics Team 53 DS4A
+
+
 
 <p align="center">
 <img src="Images/logo.png" width="500" height="500" class="center">
@@ -45,23 +46,30 @@ These are the links refrerring to the pages where we extract external data for b
   - K-means model -> [Jupyter Notebook K-means](./Model/Cluster%20predial.ipynb)
   - Time Series for TRM rate, Nominal IPVU Medellin and Occupancy Rate ->  [R script Time Series](./Model/codigo%20series%20de%20tiempo.R)
   - R model -> [R file model](./Model/Código_modelamiento.R)
-# 4. Datafolio
 
-# 5. Final report
+# 4. DataBases (CSV Files and XSLX Files)
+
+<p align="center">
+<img src="Images/databases.png" width=300 height=300 class="center">
+ </p>
+ 
+ Here you can find all the data we used to built the model.
+ - Data used for building time series (each sheet is for each variable) -> [Time Series Data](./DataBases%20(CSV%20Files)/series%20pronóticos.xlsx)
+ - Data about TRM Change (important variable in the model) took from Banco de la Republic page -> [TRM Change Data](./DataBases%20(CSV%20Files)/pronosticos_analisis_BR.xlsx)
+ - More Data from Banco de la Republic used in the model -> [Additional Data](./DataBases%20(CSV%20Files)/Series_Variables_modelo_BR.xlsx)
+
+# 5. Datafolio
+
+# 6. Final report
 
  <p align="center">
 <img src="Images/report.png" width=300 height=300 class="center">
  </p>
  
- #6. Databases (CSV Files)
- 
-
-
-
  Here you can find our conclusions about the project, it is included how the model was built step by step and some other analisis about variables -> 
  [Final Report](./FinalReport/FinalReport.pdf) 
  
- # 6. Rio Analytics members
+ # 7. Rio Analytics members
   - Andres Caballero -> [Linkedin](https://www.linkedin.com/in/andres-caballero)
   - Sara Gonzalez 
   - Oscar Rodriguez -> [Linkedin](www.linkedin.com/in/oscar-julian-rodriguez-cardenas-5b2b721bb)
