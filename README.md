@@ -40,14 +40,11 @@ These are the links refrerring to the pages where we extract external data for b
 <img src="Images/machine-learning.png" width=400 height=400 class="center">
  </p>
 
- Here you can find four R scripts: three time series for predicting TRM rate, nominal IPVU Medellin and seven Colombian metropolitan areas Occupancy rate and a final R script for the modeling; and the model is located in the python file.In addition we have a python script including a k-means for a future version of the application.
- 
+ Here you can find two R scripts: one R script with three time series for predicting TRM rate, nominal IPVU Medellin and seven Colombian metropolitan areas Occupancy rate and a final R script for the modeling; However we also have python files with: the model and clusterization using k-means model for a future version of the model.
   - Python model -> [Python file model](./Model/Model.py)
   - K-means model -> [Jupyter Notebook K-means](./Model/Cluster%20predial.ipynb)
-  - Time Series for TRM rate ->  [R script TRM rate](./Model/Cluster%20predial.ipynb)
-  - Time Series for Nominal IPVU Medellin -> [R script IPVU Medellin](./Model/Cluster%20predial.ipynb)
-  - Time Series for Occupancy Rate -> [R script Occupancy rate](./Model/Cluster%20predial.ipynb)
-
+  - Time Series for TRM rate, Nominal IPVU Medellin and Occupancy Rate ->  [R script Time Series](./Model/codigo%20series%20de%20tiempo.R)
+  - R model -> [R file model](./Model/Código_modelamiento.R)
 # 4. Datafolio
 
 # 5. Final report
@@ -55,6 +52,9 @@ These are the links refrerring to the pages where we extract external data for b
  <p align="center">
 <img src="Images/report.png" width=300 height=300 class="center">
  </p>
+ 
+ #6. Databases (CSV Files)
+ 
 
 
 
