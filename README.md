@@ -16,4 +16,9 @@ Proyecto Final DS4A  Team53
 
 # 1. EDA
 
-Read more [here](./EDA)
+This is the link to the EDA folder in which we have all the jupyter notebooks corresponding to each EDA developed [here](./EDA)
+
+# 2. Data Extraction
+
+
+
