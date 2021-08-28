@@ -16,6 +16,4 @@ Proyecto Final DS4A  Team53
 
 # 1. EDA
 
-<p align="center">
-<img src="Images/EDA_image.png" width="1000" height="1000" class="center">
- </p>
+Read more [here](./EDA)
