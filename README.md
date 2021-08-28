@@ -8,6 +8,6 @@ Proyecto Final DS4A  Team53
 
 #Welcome to Team 53 DS4A Repository 2021
 
-![Team Logo](images/Rio Analytics-logos_white - copia.png)
+![Team Logo](images/logo.png)
 
 
