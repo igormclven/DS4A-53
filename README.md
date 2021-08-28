@@ -6,11 +6,14 @@ Final project repository.
 <img src="Images/logo.png" width="500" height="500" class="center">
  </p>
  
+ <p align="center">
+Rionegro’s Town (one of Antioquia's department municipalities) recognizes and suffers from the fact  that sources of public resources are limited and the social needs tend to increase over time. Therefore, one of their aims is to predict incomes and then use this information to optimize the short and long term expenditure & investment planning and execution processes and thus solve the problem of planning and making investments without knowing what the actual income will be. An important source of this income is real estate. Project scope is limited to predict this specific income
+ </p>
 
 
 
 
-# 1. EDA
+# 1. Exploratory Data Analisis (EDA)
 
 <p align="center">
 <img src="Images/EDA_Icon.png" class="center">
@@ -34,13 +37,26 @@ These are the links refrerring to the pages where we extract external data for b
 # 3. Model
 
 <p align="center">
-<img src="Images/Machine-Learning.png" width=500 height=400 class="center">
+<img src="Images/machine-learning.png" width=500 height=400 class="center">
  </p>
 
  Here you can find four R scripts: three time series for predicting TRM rate, nominal IPVU Medellin and seven Colombian metropolitan areas Occupancy rate and a final R script for the modeling; and the model is located in the python file.In addition we have a python script including a k-means for a future version of the application.
  
-  - Python model -> [Python model](./Model/Model.py)
+  - Python model -> 
   - K-means model -> [Jupyter Notebook K-means](./Model/Cluster%20predial.ipynb)
+
+# 4. Datafolio
+
+# 5. Final report
+
+ Here you can find our conclusions about the project, it is included how the model was built step by step and some other analisis about variables -> 
+ [Final Report](./FinalReport/FinalReport.pdf) 
+ 
+ 
+ <p align="center">
+<img src="Images/report.png" width=300 height=300 class="center">
+ </p>
+
 
 
 
