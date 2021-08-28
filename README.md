@@ -40,7 +40,7 @@ These are the links refrerring to the pages where we extract external data for b
  Here you can find four R scripts: three time series for predicting TRM rate, nominal IPVU Medellin and seven Colombian metropolitan areas Occupancy rate and a final R script for the modeling; and the model is located in the python file.In addition we have a python script including a k-means for a future version of the application.
  
   - Python model -> [Python model](./Model/Model.py)
-  - K-means model -> []
+  - K-means model -> [Jupyter Notebook K-means](./Model/Cluster%20predial.ipynb)
 
 
 
