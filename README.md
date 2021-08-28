@@ -8,6 +8,8 @@ Proyecto Final DS4A  Team53
 
 # Welcome to Team 53 DS4A Repository 2021
 
-![Team Logo](Images/logo.png  =250x250)
+<p align="center">
+<img src="Images/logo.png" width="500" height="500" class="center">
+ </p>
 
 
