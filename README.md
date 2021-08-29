@@ -4,7 +4,7 @@
 
 
 <p align="center">
-<img src="Images/logo.png" width="500" height="500" class="center">
+<img src="./Images/Rio%20Analytics-logos_black.png" width="500" height="500" class="center">
  </p>
  
  <p align="center">
