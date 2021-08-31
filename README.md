@@ -60,6 +60,12 @@ These are the links refrerring to the pages where we extract external data for b
 
 # 5. Datafolio
 
+ <p align="center">
+<img src="Images/Datafolio_page-0001.jpg" class="center">
+ </p>
+
+
+
 # 6. Final report
 
  <p align="center">
