@@ -389,10 +389,7 @@ def update_children(n, ipvu, er,tc):
     
     
     figure= px.line(predictions_df,x='Año',y='recaudo',
-            labels ={'Año' : 'Year'},template = 'plotly').update_layout(
-                        {'plot_bgcolor':'rgba(0,0,0,0)',
-                        'paper_bgcolor':'rgba(0,0,0,0)'}
-                            ).add_annotation(text= 'Your prediction for '+str(next_year),x=next_year,y=prediction,arrowhead=3,showarrow=True,arrowcolor='white')
+            labels ={'Año' : 'Year'},template = 'plotly').add_annotation(text= 'Your prediction for '+str(next_year),x=next_year,y=prediction,arrowhead=3,showarrow=True,arrowcolor='black')
     
     pred = html.H4("The predicted value for "+str(next_year)+" is " + str(int(prediction//1000000000)) +"$" +" COP billions")
                              
@@ -402,7 +399,7 @@ def update_children(n, ipvu, er,tc):
 
 # Ejecucion
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server()
     
 #
 

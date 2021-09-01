@@ -5,3 +5,4 @@ pandas
 plotly.express
 googletrans==4.0.0rc1
 statsmodels
+flask
