@@ -7,11 +7,10 @@ import pandas as pd
 import dash_core_components as dcc
 import dash_html_components as html
 import numpy as np
-import pickle4 as pickle
+import pickle
 from googletrans import Translator
 from dash.dependencies import Input, Output, State
 import plotly.express as px
-import dash_bootstrap_components as dbc
 
 
 #Constantes
@@ -53,7 +52,7 @@ trm_recomendation = "TRM change value for today " + str(trans_trm.text) + " is "
 
 #
 
-app = dash.Dash(__name__)
+app = dash.Dash()
 
 #
 
@@ -69,348 +68,273 @@ def down(n_clicks):
     return dcc.send_data_frame(to_download.to_csv, "CSV_Files/predictions.csv")
     
 
-#Frontend
-app.layout = html.Div(style={'textAlign':'center'},children=[
-                      html.Div(className='row',  # Define the row element
-                               children=[
-                                  html.Div(className='four columns div-user-controls',children=[
-                                           # Define the left element
-                                      
-                                      
-                                       html.Div(html.Img(src="assets/Logo.png",width="300",height="300") ),
-                                        html.P("For predictions please go to the Predictions Tab before pressing the button." ,style={'font-family':'Franklin Gothic Medium'}),
-                                        html.P("Please enter the following data: ",style={'font-family':'Franklin Gothic Medium'}),
-                                      
-                                      html.Div(className='Inputs',
-                                              children  = [
-                                                   dcc.Input(
-                                                id="IPVU",
-                                                type="number",
-                                                placeholder="Medellin's IPVU",
-                                              style={'backgroundColor': 'rgb(50, 50, 50)',
-                                                      'font_family':'sans-serif'},
-                                                debounce = True
-                                                
-                                                   ),
-                                            
-                                                  
-                                                  dcc.Input(
-                                                  
-                                                  id="EmploymentRate",
-                                                      type="number",
-                                                      placeholder = "Occupancy rate",
-                                                    style={
-                                                          'backgroundColor': 'rgb(50, 50, 50)',
-                                                        'font_family':'sans-serif'
-                                                          },                                             
-                                                    debounce = True
-                                                      
-                                                  ),
-                                                  
-                                                  dcc.Input(
-                                                  
-                                                  id="TRMChange",
-                                                      type="number",
-                                                      placeholder = "TRM Change",
-                                                      style={'backgroundColor': 'rgb(50, 50, 50)'},
-                                                  
-                                                  
-                                                  )
-                                                  
-                                                  
-                                              ]),
-                                      
-                                      html.Br(),
-                                      html.Button('Predict', id='submit-val', style={'color':'white'},n_clicks=0),
+## Frontend ------------------------------------------------------------------------------------------
 
-    
-                                        
-                                      
-                                      
-                                  ]),
+sidebar_section = html.Div([
+    html.Div(children  = [
+        
+        html.Div(html.Img(src="assets/Logo.png",width="300",height="300"), className="text-center" ),
+        html.Hr(),
+        html.Div([
+            html.P("For predictions please go to the Predictions Tab before pressing the button.", className="lead"),
+            html.P("Please enter the following data:", className="lead"),
+        ],className='p-3'),        
 
-                                   
-                                      
-                                  html.Div(className='eight columns div-for-charts bg-grey',style={'overflowY': 'scroll', 'height': 650} ,children = [
-                                      
-                                      
-                                      dcc.Tabs(id='tabs', value='tab-1', children=[
-                                          
-                                          #First Tab 
-                                          
-                                                dcc.Tab(label='What is Rio Analytics?', value='tab-1', style={'backgroundColor': 'rgb(50, 50, 50)','font-family':'Franklin Gothic Medium'},children=[
-                                                    
-                                                    
-                                                     html.Div(style={'textAlign': 'center',
-                                                                        'font-family':'Georgia'},children = [
-                                                        html.H3("Rionegro's Social Class Distribution",style={'font-family':'Georgia'}),
-                                                        html.Br(),
-                                                       dcc.Graph(
-                                                       
-                                                       
-                                                       figure = px.histogram(df,x=['2000','2010','2020'],
-                                                                labels={'value':'Social Class','variable':'Year','estrato_2000':'2000'}).update_layout(
-                                                       {'font_color':'white','plot_bgcolor':'rgba(0,0,0,0)','paper_bgcolor':'rgba(0,0,0,0)'}
-                                                       
-                                                           ).add_annotation(
-                                                       
-                                                       text= 'Huge Concentration of people',x='0',y=20000,arrowhead=2,showarrow=True,arrowcolor='white')
-                                                           
+        html.Div(className='input-group p-3', children  = [
+            dcc.Input(
+                id="IPVU",
+                type="number",
+                placeholder="Medellin's IPVU",
+                debounce = True,
+                className='form-control'
+            ),
+        ]),
+        html.Div(className='input-group px-3', children  = [
+            dcc.Input(
+                id="EmploymentRate",
+                type="number",
+                placeholder = "Occupancy rate",
+                debounce = True,
+                className='form-control'
+            ),
+        ]), 
+        html.Div(className='input-group p-3', children  = [
+            dcc.Input(
+                id="TRMChange",
+                type="number",
+                placeholder = "TRM Change",
+                className='form-control'    
+            )
+        ]),
+        
+        html.Div([
+            html.Button('Predict', id='submit-val', className='btn btn-primary btn-lg'),
+        ],className='p-3 text-center'),
+
+    ], className="sidebar-wrapper bg-dark text-white px-3 active" ),  
+
+], id='sidebar', className='active')
+
+#container
+container_section = html.Div(id='main', children=[
+        html.Div([
+            html.H3("Control Panel")
+        ], className='page-heading'),
+        
+        html.Div(children = [
             
-                                                       
-                                                       ),
-                                                        html.Br(),
-                                                        html.P(p1,style={'font-family':'Franklin Gothic Medium'}),
-                                                         
-                                                        html.Img(src="assets/helping.png"),
-                                                        html.Br(),
-                                                        html.P(introduction,style={'font-family':'Franklin Gothic Medium'})
-         
-#
-            
-                                                        ])
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                       #End first Tab         
-                                                ]),
-                                                dcc.Tab(label='Important Macroeconomic Indicators', value='tab-2', style={'backgroundColor': 'rgb(50, 50, 50)','font-family':'Franklin Gothic Medium'},children=[
-                                                   html.H3("How to predict Rionegro's property tax total income?",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                   html.Br(),
-                                                   html.Img(src="assets/bman.png",height=300,width=300),
-                                                   html.Br(),
-                                                   html.P(p2,style={'font-family':'Franklin Gothic Medium','text-align':'center'}),
-                                                   html.Br(),
-                                                    html.H3("Medellin's IPVU vs Property Tax Total",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                   dcc.Graph(
-                                                    
-                                                        
-                                                       figure= px.line(model_df,x='Año',y=['Property Tax Total',"Medellin's IPVU"],
-              
-                                                                  labels = {
-                                                                               'value' : 'Normalized Data',
-                                                                                'Año' : 'Year',
-                                                                                'variable':"Variables"
-                  
-                                                                          },
-        
-                                                               
-                                                               
-                                                                       template = 'plotly_dark').update_layout(
-                                                            
-                                                                    {'plot_bgcolor':'rgba(0,0,0,0)',
-                                                                    
-                                                                        'paper_bgcolor':'rgba(0,0,0,0)'}
-                                                        
-                                                        
-                                                        )
-            
-                                                    
-                                                    
-                                                    
-                                                    ),
-                                                    html.Br(),
-                                                    
-                                                    html.P(p3,style={'font-family':'Franklin Gothic Medium','text-align':'center'}),
-                                                    
-                                                    html.Br(),
-                                                    
-                                                    
-                                                    html.H3("Occupancy rate vs Property Tax Total",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                    
-                                                    
-                                                    dcc.Graph(
-                                
-                                                    
-                                                    
-                                                figure= px.line(model_df,x='Año',y=['Property Tax Total',"Tasa Ocupacion"],
-              
-                                                                  labels = {
-                                                                               'value' : 'Normalized Data',
-                                                                                'Año' : 'Year',
-                                                                                'variable':"Variables"
-                  
-                                                                          },
-              
-              
+            dcc.Tabs(id='tabs', value='tab-1', className='py-3', children=[
+                     
+                # Tab1
+                dcc.Tab(label='What is Rio Analytics?', value='tab-1',children=[
+                    
+                    html.Div(className='card',children = [
+                        html.Div([
+                            html.H3("Rionegro's Social Class Distribution"),
+                        ], className='card-header text-center'),
 
-                                                               
-                                                               
-                                                                       template = 'plotly_dark').update_layout(
-                                                            
-                                                                    {'plot_bgcolor':'rgba(0,0,0,0)',
-                                                                    
-                                                                        'paper_bgcolor':'rgba(0,0,0,0)'}
-                                                        
-                                                        
-                                                        )
-        
-                                                    
-                                                    
-                                                    ),
-                                            html.Br(),
-                                                    
-                                            html.P(p4,style={'font-family':'Franklin Gothic Medium','text-align':'center'}),
-                                                    
-                                            html.Br(),
-                                            html.H3("TRM Change vs Property Tax Total",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                    
-                                            dcc.Graph(
-                                                    
-                                                    
-                                                    
-                                                    
-                                                figure= px.line(model_df,x='Año',y=['Property Tax Total',"TRM Change"],
-              
-                                                                  labels = {
-                                                                               'value' : 'Normalized Data',
-                                                                                'Año' : 'Year',
-                                                                                'variable':"Variables"
-                  
-                                                                          },
-              
-              
-        
-                                                               
-                                                               
-                                                                       template = 'plotly_dark').update_layout(
-                                                            
-                                                                    {'plot_bgcolor':'rgba(0,0,0,0)',
-                                                                    
-                                                                        'paper_bgcolor':'rgba(0,0,0,0)'}
-                                                        
-                                                        
-                                                        )
-        
-                                                    
-                                                    
-                                                    ),
-                                                    
-                                                html.Br(),
-                                                html.P(p5,style={'font-family':'Franklin Gothic Medium','text-align':'center'})
+                        html.Div([
+                            dcc.Graph(
+                                figure = px.histogram(df,x=['2000','2010','2020'],
+                                labels={'value':'Social Class','variable':'Year','estrato_2000':'2000'}).add_annotation(
+                                        text= 'Huge Concentration of people',x='0',y=20000,arrowhead=2,showarrow=True,arrowcolor='black')
+                            ),
+                            html.P(p1),
+                            html.Img(src="assets/helping.png", className='mx-auto d-block p-3'),
+                            html.P(introduction)
+                        ], className='card-body'),
+                    ])
+                ]),
 
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                ]),
-                                                dcc.Tab(label='Rio Analytics team', value='tab-3', style={'backgroundColor': 'rgb(50, 50, 50)','font-family':'Franklin Gothic Medium'},children=[
-                                                    
-                                                    
+                #Tab 2
+                dcc.Tab(label='Important Macroeconomic Indicators', value='tab-2',children=[
+                    html.Div(className='card',children = [
+                        html.Div([
+                            html.H3("How to predict Rionegro's property tax total income?"),
+                        ], className='card-header text-center'),
+
+                        html.Div([
                             
+                            html.Img(src="assets/bman.png", width='300', className='mx-auto d-block p-3'),
+                            html.P(p2),
+                            html.Hr(),
+                            html.H3("Medellin's IPVU vs Property Tax Total",style={'textAlign': 'center'}),
+                            dcc.Graph(
+                                    figure= px.line(model_df,x='Año',y=['Property Tax Total',"Medellin's IPVU"],
+                                    
+                                    labels = {
+                                            'value' : 'Normalized Data',
+                                                'Año' : 'Year',
+                                                'variable':"Variables"
+                                },
+                                template = 'plotly')
+                            ),
+                            html.P(p3),
+                            html.Hr(),
+                            html.H3("Occupancy rate vs Property Tax Total",style={'textAlign': 'center'}),
+                            
+                            dcc.Graph(
+                                figure= px.line(model_df,x='Año',y=['Property Tax Total',"Tasa Ocupacion"],
+                                labels = {
+                                            'value' : 'Normalized Data',
+                                                'Año' : 'Year',
+                                                'variable':"Variables"
+
+                                },
+                                
+                                template = 'plotly')
+                            ),
+                            
+                            html.P(p4,style={'text-align':'center'}),
+                            html.Hr(),
+                            html.H3("TRM Change vs Property Tax Total",style={'textAlign': 'center'}),
+                            
+                            dcc.Graph(
+                                
+                                figure= px.line(model_df,x='Año',y=['Property Tax Total',"TRM Change"],
+
+                                labels = {
+                                            'value' : 'Normalized Data',
+                                                'Año' : 'Year',
+                                                'variable':"Variables"
+
+                                },
+                                
+                                template = 'plotly')
+                            ),
+                            
+                            html.P(p5,style={'text-align':'center'})
+
+                        ], className='card-body'),
+
+
+                    ]),
+
+                ]),
+                
+                # Tab 3
+                dcc.Tab(label='Rio Analytics team', value='tab-3',children=[
+
+                    html.Div(className='row',children = [
+                        html.Div(className='col',children = [
+                            html.Div(className='card border-primary',children = [
+                                html.Img(src="assets/Andres-modified.png", className='mx-auto d-block p-3', width='300'),
+                                html.Div([
+                                    html.H4("Andres Caballero", className='card-title'),
+                                    html.P("Industrial Engineer"),
+                                    html.P("UMNG University"),
+                                    html.P("Data Analyst at Seguros Bolivar"),
+
+                                ],className='card-body text-center'),
+
+                            ]),
+                        ]),
+
+                        html.Div(className='col',children = [
+                            html.Div(className='card border-success',children = [
+                                html.Img(src="assets/Sara.png", className='mx-auto d-block p-3', width='300'),
+                                html.Div([
+                                    html.H4("Sara Gonzalez", className='card-title'),
+                                    html.P("Statistician"),
+                                    html.P("National University of Colombia"),
+                                    html.P("Analytics model professional at Banco Popular"),
+
+                                ],className='card-body text-center'),
+
+                            ]),
+                        ]),
+
+                        html.Div(className='col',children = [
+                            html.Div(className='card border-danger',children = [
+
+                                html.Img(src="assets/David-modified.png", className='mx-auto d-block p-3', width='300'),
+                                html.Div([
+                                    html.H4("David Arbelaez", className='card-title'),
+                                    html.P("Adimnistrative Engineer"),
+                                    html.P("EIA University"),
+                                    html.P("Data Scientist at Rappi"),
+
+                                ],className='card-body text-center'),
+
+                            ]),
+                        ]),
+                    ]),
+
+                    html.Div(className='row',children = [
+                        html.Div(className='col',children = [
+                            html.Div(className='card border-warning',children = [
+                                html.Img(src="assets/Oscar.png", className='mx-auto d-block p-3', width='300'),
+                                html.Div([
+                                    html.H4("Oscar Rodriguez", className='card-title'),
+                                    html.P("Computer Scientist student"),
+                                    html.P("National University of Colombia"),
+
+                                ],className='card-body text-center')
+
+                            ]),
+                        ]),
+
+                        html.Div(className='col',children = [
+                            html.Div(className='card border-info',children = [
+                                html.Img(src="assets/Oscar.png", className='mx-auto d-block p-3', width='300'),
+                                html.Div([
+                                    html.H4("Mauricio Alvarado", className='card-title'),
+                                    html.P("Systems Engineer"),
+                                    html.P("District University"),
+                                    html.P("Web Developer"),
+
+                                ],className='card-body text-center'),
+
+                            ]),
+                        ]),
+
+                    ]),                                
+                ]),
+                
+                #Tab 4
+                dcc.Tab(id='predictionsTab',label='Predictions',value="tab-4", children=[
+
+
+                    html.Div(className='card',children = [
+                        html.Div([
+                            html.H4(trm_recomendation),
+                            html.Div(id='predictedValue',children=[
+
+                            ]),   
+                        ], className='card-header text-center'),
+
+                        html.Div([
+                            dcc.Graph(id='taxPrediction',
+                            
+                            figure= px.line(model_df,x='Año',y='recaudo',
+                            labels = {'Año' : 'Year',
+                                    'recaudo':'Property Tax Total' },
+                                    
+                            template = 'plotly')
+                        ),
+                        html.Div([
+                            html.Button("Download CSV file with predicted files",id="csv_d",className='btn btn-primary btn-lg'),
+                            dcc.Download(id="dccDown")
+                        ],className='p-3 text-center'),
+                    
+                        ], className='card-body'),
+                    ])
+                ])
+            ])
                                                 
-                                                    
-                                                html.Br(),
-                                                html.H3("Andres Caballero",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.Img(src = "assets/Andres-modified.png",style={'height':300,'width':300}),
-                                                html.P("Industrial Engineer",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.P("UMNG University",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.P("Data Analyst at Seguros Bolivar",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.Br(),
-                                                html.Br(),
-                                                    
-                                                html.Br(),
-                                                html.H3("Sara Gonzalez",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.Img(src = "assets/Sara.png",style={'height':300,'width':300}),
-                                                html.P("Statistician",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.P("National University of Colombia",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.P("Analytics model professional at Banco Popular",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.Br(),
-                                                html.Br(),
-                                                    
-                                                html.Br(),
-                                                html.H3("David Arbelaez",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.Img(src = "assets/David-modified.png",style={'height':300,'width':300}),
-                                                html.P("Adimnistrative Engineer",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.P("EIA University",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.P("Data Scientist at Rappi",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.Br(),
-                                                html.Br(),
-                                                    
-                                                html.Br(),
-                                                html.H3("Oscar Rodriguez",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.Img(src = "assets/Oscar.png",style={'height':300,'width':300}),
-                                                html.P("Computer Scientist student",style={'font-family':'Georgia','textAlign': 'center'}),
-                                                html.P("National University of Colombia",style={'font-family':'Georgia','textAlign': 'center'})
-                                                
-                                                
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                ]),
-                                                dcc.Tab(id='predictionsTab',label='Predictions',value="tab-4",style={'background':'rgb(50,50,50)','font-familiy':'Franklin Gothic Medium'},
-                                                        children=[
-                                                    
-                                            
-                                        html.H4(trm_recomendation,style={'font-family':'Franklin Gothic Medium','text-align':'center'}),        
-                                                        
-                                        html.Div(id='predictedValue',style={'font-family':'Franklin Gothic Medium','text-align':'center'},children=[
-                                            
-                                        
-                                            
-                                            
-                                            
-                                        ]),          
-                                             
-                                           dcc.Graph(id='taxPrediction',
-                                                    
-                                                figure= px.line(model_df,x='Año',y='recaudo',
-              
-                                                                  labels = {'Año' : 'Year',
-                                                                             'recaudo':'Property Tax Total' },
-                                                                            
 
-                                                               
-                                                                       template = 'plotly_dark').update_layout(
-                                                            
-                                                                    {'plot_bgcolor':'rgba(0,0,0,0)',
-                                                                    
-                                                                        'paper_bgcolor':'rgba(0,0,0,0)'}
-                                                        
-                                                        
-                                                        )
-        
-                                                    
-                                                    
-                                                    ),
-                                                        
-                                            html.Button("Download CSV file with predicted files",id="csv_d",style={'color':'white'}),
-                                            dcc.Download(id="dccDown")
-                                                    
-                                                
-                                                    
-                                                    
-                                                    
-                                                    
-                                                ])
-                                      
-                                                                                        ])
-                                                
-                                                 
+        ], className='page-content')
+    ])
 
 
+## Main
 
-                                ])
+app.layout = html.Div([
+    sidebar_section,
+    container_section,
+], id='app')
 
-
-])
-
-
-                                                          
-                                                                                     
-    
-])
-
+# -----------------------------------------------------------------------------
 
     
 @app.callback(
@@ -465,7 +389,7 @@ def update_children(n, ipvu, er,tc):
     
     
     figure= px.line(predictions_df,x='Año',y='recaudo',
-            labels ={'Año' : 'Year'},template = 'plotly_dark').update_layout(
+            labels ={'Año' : 'Year'},template = 'plotly').update_layout(
                         {'plot_bgcolor':'rgba(0,0,0,0)',
                         'paper_bgcolor':'rgba(0,0,0,0)'}
                             ).add_annotation(text= 'Your prediction for '+str(next_year),x=next_year,y=prediction,arrowhead=3,showarrow=True,arrowcolor='white')
@@ -478,7 +402,7 @@ def update_children(n, ipvu, er,tc):
 
 # Ejecucion
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
     
 #
 

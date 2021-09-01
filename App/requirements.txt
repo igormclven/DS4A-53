@@ -3,7 +3,5 @@ numpy
 lxml
 pandas
 plotly.express
-pickle4
 googletrans==4.0.0rc1
-dash_bootstrap_components
 statsmodels
