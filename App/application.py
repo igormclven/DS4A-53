@@ -217,7 +217,7 @@ container_section = html.Div(id='main', children=[
 
                     html.Div(className='row',children = [
                         html.Div(className='col',children = [
-                            html.Div(className='card border-primary',children = [
+                            html.Div(className='card border-primary animate__animated animate__bounceIn',children = [
                                 html.Img(src="assets/Andres-modified.png", className='mx-auto d-block p-3', width='300'),
                                 html.Div([
                                     html.H4("Andres Caballero", className='card-title'),
@@ -231,7 +231,7 @@ container_section = html.Div(id='main', children=[
                         ]),
 
                         html.Div(className='col',children = [
-                            html.Div(className='card border-success',children = [
+                            html.Div(className='card border-success animate__animated animate__bounceIn',children = [
                                 html.Img(src="assets/Sara.png", className='mx-auto d-block p-3', width='300'),
                                 html.Div([
                                     html.H4("Sara Gonzalez", className='card-title'),
@@ -245,7 +245,7 @@ container_section = html.Div(id='main', children=[
                         ]),
 
                         html.Div(className='col',children = [
-                            html.Div(className='card border-danger',children = [
+                            html.Div(className='card border-danger animate__animated animate__bounceIn',children = [
 
                                 html.Img(src="assets/David-modified.png", className='mx-auto d-block p-3', width='300'),
                                 html.Div([
@@ -262,7 +262,7 @@ container_section = html.Div(id='main', children=[
 
                     html.Div(className='row',children = [
                         html.Div(className='col',children = [
-                            html.Div(className='card border-warning',children = [
+                            html.Div(className='card border-warning animate__animated animate__bounceIn',children = [
                                 html.Img(src="assets/Oscar.png", className='mx-auto d-block p-3', width='300'),
                                 html.Div([
                                     html.H4("Oscar Rodriguez", className='card-title'),
@@ -275,7 +275,7 @@ container_section = html.Div(id='main', children=[
                         ]),
 
                         html.Div(className='col',children = [
-                            html.Div(className='card border-info',children = [
+                            html.Div(className='card border-info animate__animated animate__bounceIn',children = [
                                 html.Img(src="assets/Oscar.png", className='mx-auto d-block p-3', width='300'),
                                 html.Div([
                                     html.H4("Mauricio Alvarado", className='card-title'),
