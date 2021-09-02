@@ -61,7 +61,7 @@ These are the links refrerring to the pages where we extract external data for b
 # 5. Datafolio
 
  <p align="center">
-<img src="Images/Datafolio_page-0001.jpg" class="center">
+<img src="Images/Datafolio-1.png" class="center">
  </p>
 
 
