@@ -72,7 +72,7 @@ These are the links refrerring to the pages where we extract external data for b
 <img src="Images/report.png" width=300 height=300 class="center">
  </p>
  
- Here you can find our conclusions about the project, it is included how the model was built step by step and some other analisis about variables -> 
+ Here you can find our conclusions about the project, it is included how the model was built step by step and some other analisis about other variables -> 
  [Final Report](./FinalReport/FinalReport.pdf) 
  
  # 7. Rio Analytics members
