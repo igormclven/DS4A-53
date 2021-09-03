@@ -61,7 +61,7 @@ These are the links refrerring to the pages where we extract external data for b
 # 5. Datafolio
 
  <p align="center">
-<img src="Images/Datafolio-1.png" class="center">
+<img src="Images/53_Folio-1.png" class="center">
  </p>
 
 
@@ -81,7 +81,20 @@ These are the links refrerring to the pages where we extract external data for b
   - Oscar Rodriguez -> [Linkedin](www.linkedin.com/in/oscar-julian-rodriguez-cardenas-5b2b721bb)
   - Mauricio Alvarado -> [Linkedin](https://www.linkedin.com/in/mauriciora/)
   - David Arbelaez -> [Linkedin](http://www.linkedin.com/in/david-arbelaez-2aab30a7)
+
+
+# 8.How to install?
+
+ <p align="center">
+<img src="Images/app.jfif" class="center">
+ </p>
  
+
+ 1. First download the application folder -> [App](./DS4A-53/tree/main/App).
+ 2. Download and install Python 3.8.10 .
+ 3. Open a terminal inside the App directory and type 'pip install -r requirements.txt', this will install the nedeed libraries for running the app.
+ 4. In the same terminal type 'python application.py' or 'python3 .\application.py', then click the link.
+
 
 
 
