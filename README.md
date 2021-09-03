@@ -79,7 +79,7 @@ These are the links refrerring to the pages where we extract external data for b
   - Andres Caballero -> [Linkedin](https://www.linkedin.com/in/andres-caballero)
   - Sara Gonzalez 
   - Oscar Rodriguez -> [Linkedin](www.linkedin.com/in/oscar-julian-rodriguez-cardenas-5b2b721bb)
-  - Mauricio 
+  - Mauricio Alvarado -> [Linkedin](https://www.linkedin.com/in/mauriciora/)
   - David Arbelaez -> [Linkedin](http://www.linkedin.com/in/david-arbelaez-2aab30a7)
  
 
